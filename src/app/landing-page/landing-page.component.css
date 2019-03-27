@@ -1,3 +1,10 @@
-button{
-    text-align: center;
+html{text-align: center;
+    background-color: rgb(52, 160, 25)}
+#logIn{
+    position: absolute;
+    left: 200px;
+}
+#CreateAccount{
+    position: absolute;
+    left: 280px;
 }
