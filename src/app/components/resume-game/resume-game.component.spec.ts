@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateAccountComponent } from './create-account.component';
+import { ResumeGameComponent } from './resume-game.component';
 
-describe('CreateAccountComponent', () => {
-  let component: CreateAccountComponent;
-  let fixture: ComponentFixture<CreateAccountComponent>;
+describe('ResumeGameComponent', () => {
+  let component: ResumeGameComponent;
+  let fixture: ComponentFixture<ResumeGameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateAccountComponent ]
+      declarations: [ ResumeGameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateAccountComponent);
+    fixture = TestBed.createComponent(ResumeGameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
