@@ -11,8 +11,12 @@ import { PlayGuessComponent } from './components/play-guess/play-guess.component
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
+import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
 
 const routes: Routes = [{
+  path: 'postGame',
+  component: PostgameLobbyComponent
+},{
   path: 'newGame',
   component: NewGameComponent
 },{

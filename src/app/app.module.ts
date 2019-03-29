@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CanvasWhiteboardModule } from 'node_modules/ng2-canvas-whiteboard';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
+import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,14 @@ import { ResumeGameComponent } from './components/resume-game/resume-game.compon
     LeaderboardComponent,
     UpdateProfileComponent,
     NewGameComponent,
-    ResumeGameComponent
+    ResumeGameComponent,
+    PostgameLobbyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CanvasWhiteboardModule
+    CanvasWhiteboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
