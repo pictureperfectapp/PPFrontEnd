@@ -1,13 +1,12 @@
-<<<<<<< HEAD
+
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
 import { HttpClient } from '@angular/common/http';
 
-=======
 import { Component, OnInit } from '@angular/core';
 import { WordService } from 'src/app/word.service';
 import { Word } from 'src/app/word';
->>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
+
 @Component({
   selector: 'app-play-draw',
   templateUrl: './play-draw.component.html',
@@ -15,11 +14,9 @@ import { Word } from 'src/app/word';
 })
 export class PlayDrawComponent implements OnInit {
 
-<<<<<<< HEAD
+
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-  }
 
   image: string = "";
 
@@ -35,8 +32,7 @@ export class PlayDrawComponent implements OnInit {
       this.http.post('https://16fcc55b-1bab-4153-938f-743595374287.mock.pstmn.io/image', fd).subscribe(res=>{console.log(res)});
   }
   word:string = "Word to Draw"
-}
-=======
+
   currentWord: Word = {
     word:undefined
   };
@@ -79,4 +75,3 @@ count:number=0;
       
     }
 }
->>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf

@@ -2,10 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CanvasWhiteboardModule } from 'node_modules/ng2-canvas-whiteboard';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 
-=======
->>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,10 +17,8 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
-<<<<<<< HEAD
 import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
-=======
->>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
+
 
 @NgModule({
   declarations: [
@@ -39,12 +34,9 @@ import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lob
     LeaderboardComponent,
     UpdateProfileComponent,
     NewGameComponent,
-<<<<<<< HEAD
     ResumeGameComponent,
     PostgameLobbyComponent
-=======
-    ResumeGameComponent
->>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
+
   ],
   imports: [
     BrowserModule,
