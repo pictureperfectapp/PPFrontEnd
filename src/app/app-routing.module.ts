@@ -1,23 +1,51 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateAccountComponent } from './create-account/create-account.component';
-import {LogInComponent} from './log-in/log-in.component';
-import {LandingPageComponent} from './landing-page/landing-page.component'
-import {UserPageComponent} from './user-page/user-page.component'
-import {AdminPageComponent} from './admin-page/admin-page.component'
-import {GameViewComponent} from './game-view/game-view.component'
-import {GuessingViewComponent} from './guessing-view/guessing-view.component'
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { PlayOptionsComponent } from './components/play-options/play-options.component';
+import { PlayDrawComponent } from './components/play-draw/play-draw.component';
+import { PlayGuessComponent } from './components/play-guess/play-guess.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { NewGameComponent } from './components/new-game/new-game.component';
+import { ResumeGameComponent } from './components/resume-game/resume-game.component';
 
-
-const routes: Routes = [
-  {path:'create-account', component:CreateAccountComponent},
-  {path:'log-in', component:LogInComponent},
-  {path:'landing-page', component:LandingPageComponent},
-  {path:'UserPage', component:UserPageComponent},
-  {path:'AdminPage', component:AdminPageComponent},
-  {path:'GameView', component:GameViewComponent},
-  {path:'GuessingView', component:GuessingViewComponent},
-];
+const routes: Routes = [{
+  path: 'newGame',
+  component: NewGameComponent
+},{
+  path: 'resumeGame',
+  component: ResumeGameComponent
+},{
+  path: 'updateInf',
+  component: UpdateProfileComponent
+},{
+  path: 'login',
+  component: LoginComponent
+}, {
+  path: 'register',
+  component: RegisterComponent
+}, {
+  path: 'dashboard',
+  component: DashboardComponent
+}, {
+  path: 'profile',
+  component: ProfileComponent
+}, {
+  path: 'leaderboard',
+  component: LeaderboardComponent
+}, {
+  path: 'playOp',
+  component: PlayOptionsComponent
+}, {
+  path: 'playDr',
+  component: PlayDrawComponent
+}, {
+  path: 'playGu',
+  component: PlayGuessComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

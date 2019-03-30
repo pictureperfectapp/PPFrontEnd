@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Picture-Perfect'`, () => {
+  it(`should have as title 'PicPFrontEnd'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Picture-Perfect');
+    expect(app.title).toEqual('PicPFrontEnd');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Picture-Perfect!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to PicPFrontEnd!');
   });
 });

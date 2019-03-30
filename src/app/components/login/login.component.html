@@ -1,0 +1,26 @@
+<div class="container">
+  <app-banner></app-banner>
+  <div class="container align-content-center" id="loginForm">
+    <form action="api/login" method="post">
+      <div class="form-row justify-content-center">
+        <label>Username:</label>
+      </div>
+      <div class="form-row justify-content-center">
+        <input class="inputstyle" type="text" name="username" id="username" placeholder="Username">
+      </div>
+
+      <div class="form-row justify-content-center">
+        <label>Password:</label>
+      </div>
+      <div class="form-row justify-content-center">
+        <input class="inputstyle" type="password" name="password" id="password" placeholder="Password">
+      </div>
+      <br>
+      <div class="form-row justify-content-center">
+        <input class="btn btn-primary" type="submit" value="login" id="submitButton">
+      </div>
+    </form>
+    <br>
+    <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
+  </div>
+</div>

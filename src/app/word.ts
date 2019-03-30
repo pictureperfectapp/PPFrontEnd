@@ -1,3 +1,3 @@
-export interface Word{
+export interface Word {
     word: string
 }
