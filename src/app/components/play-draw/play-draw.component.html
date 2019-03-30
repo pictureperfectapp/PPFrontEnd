@@ -1,6 +1,7 @@
 <div class="container">
   <div id="canvasContainer" style="height: 400px">
     <div class="form-row justify-content-center">
+<<<<<<< HEAD
       <h4>Draw: {{word}}</h4>
     </div>
     <div class="form-row justify-content-center">
@@ -9,6 +10,16 @@
     <div class="form-row justify-content-center">
       <button class="btn btn-outline-primary" (click)="print()">Print</button>
     </div>
+=======
+      <h4>Draw: {{randWord}}</h4>
+    </div>
+    <div class="form-row justify-content-center">
+      <div *ngIf="count<3">
+        <button class="btn btn-primary" (click)='getNewWord()' >Get a new word!</button>
+        </div>
+      <a class="btn btn-outline-primary" routerLink="">Submit</a>
+    </div>
+>>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
     <br>
     <canvas-whiteboard #canvasWhiteboard [drawButtonClass]="'drawButtonClass'" [drawButtonText]="'Draw'"
       [clearButtonClass]="'clearButtonClass'" [clearButtonText]="'Clear'" [undoButtonText]="'Undo'"

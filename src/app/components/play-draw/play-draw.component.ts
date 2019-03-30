@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
 import { HttpClient } from '@angular/common/http';
 
+=======
+import { Component, OnInit } from '@angular/core';
+import { WordService } from 'src/app/word.service';
+import { Word } from 'src/app/word';
+>>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
 @Component({
   selector: 'app-play-draw',
   templateUrl: './play-draw.component.html',
@@ -9,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlayDrawComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -29,3 +36,47 @@ export class PlayDrawComponent implements OnInit {
   }
   word:string = "Word to Draw"
 }
+=======
+  currentWord: Word = {
+    word:undefined
+  };
+  constructor(private wordService: WordService) { }
+  
+  ngOnInit() {
+  this.getWords();
+    
+  }
+
+  words: Word[] = [];
+wordCount:number;
+i: number;
+randWord: string="Get a word!";
+  getWords(){
+    console.log("Hello")
+    this.wordService.getWords()
+    .subscribe((allWords)=>{
+        this.words = allWords;
+        console.log(this.words);
+        this.wordCount=this.words.length-1;
+        this.i= Math.floor((Math.random() * this.wordCount) + 1); 
+  this.randWord=this.words[this.i].word;
+  console.log("Random word is"+ this.randWord);
+      });
+      
+      
+      
+    }
+    
+count:number=0;
+    getNewWord(){
+      this.count++;
+      console.log("changing word");
+      this.wordCount=this.words.length-1;
+        this.i= Math.floor((Math.random() * this.wordCount) + 1); 
+        this.randWord=this.words[this.i].word;
+      
+      
+      
+    }
+}
+>>>>>>> ce8e01edc168029e50283be262c148d6e8b146cf
