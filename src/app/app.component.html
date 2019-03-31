@@ -1,8 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
-  
- 
-<app-banner></app-banner>
-<app-landing-page></app-landing-page>
-<!--<app-create-account></app-create-account>-->
-<router-outlet></router-outlet>
+<nav>
+  <a class="btn btn-primary" routerLink="/">Clear</a>
+  <a class="btn btn-primary" routerLink="/login">Login</a>
+  <a class="btn btn-primary" routerLink="/register">Register</a>
+  <a class="btn btn-primary" routerLink="/dashboard">Dashboard</a>
+  <a class="btn btn-primary" routerLink="/profile">Profile</a>
+  <a class="btn btn-primary" routerLink="/updateInf">Update Information</a>
+  <a class="btn btn-primary" routerLink="/leaderboard">Leaderboard</a>
+  <a class="btn btn-primary" routerLink="/playOp">PlayOptions</a>
+  <a class="btn btn-primary" routerLink="/newGame">NewGame</a>
+  <a class="btn btn-primary" routerLink="/resumeGame">ResumeGame</a>
+  <a class="btn btn-primary" routerLink="/playDr">PlayDraw</a>
+  <a class="btn btn-primary" routerLink="/playGu">PlayGuesser</a>
+  <a class="btn btn-primary" routerLink="/postGame">Post Game Lobby</a>
+</nav>
+<hr>
+<div class="container">
+  <div class="jumbotron">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,24 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CanvasWhiteboardModule } from 'node_modules/ng2-canvas-whiteboard';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BannerComponent } from './banner/banner.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { CreateAccountComponent } from './create-account/create-account.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PlayOptionsComponent } from './components/play-options/play-options.component';
+import { PlayDrawComponent } from './components/play-draw/play-draw.component';
+import { PlayGuessComponent } from './components/play-guess/play-guess.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { NewGameComponent } from './components/new-game/new-game.component';
+import { ResumeGameComponent } from './components/resume-game/resume-game.component';
+import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    PlayOptionsComponent,
+    PlayDrawComponent,
+    PlayGuessComponent,
+    DashboardComponent,
     BannerComponent,
-    LandingPageComponent,
-    LogInComponent,
-    CreateAccountComponent
+    LeaderboardComponent,
+    UpdateProfileComponent,
+    NewGameComponent,
+    ResumeGameComponent,
+    PostgameLobbyComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CanvasWhiteboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

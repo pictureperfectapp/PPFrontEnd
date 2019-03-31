@@ -1,0 +1,20 @@
+.jumbotron{
+    text-align: center;
+    height: 100px;
+}
+#pencil{
+    width: 50px;
+    position:relative;
+    top:-20px;
+    margin-left:1em;
+}
+h1{
+    display: inline-block;
+    font-family: "Jokerman";
+    color: rgb(13, 13, 143);
+    text-shadow:
+		-1px -1px 0 rgb(250, 248, 248),
+		1px -1px 0 rgb(250, 248, 248),
+		-1px 1px 0 rgb(250, 248, 248),
+		1px 1px 0 rgb(250, 248, 248);
+}
