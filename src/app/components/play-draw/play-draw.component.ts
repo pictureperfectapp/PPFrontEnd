@@ -1,11 +1,10 @@
 
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
 import { HttpClient } from '@angular/common/http';
-
-import { Component, OnInit } from '@angular/core';
-import { WordService } from 'src/app/word.service';
-import { Word } from 'src/app/word';
+import { WordService } from 'src/app/services/word.service';
+import { Word } from 'src/app/models/word';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-play-draw',
@@ -14,64 +13,48 @@ import { Word } from 'src/app/word';
 })
 export class PlayDrawComponent implements OnInit {
 
-
-  constructor(private http: HttpClient) { }
-
-
   image: string = "";
+  count: number = 0;
+  words: Word[] = [];
+  wordCount: number;
+  i: number;
+  randWord: string = "Get a word!";
+
+  currentWord: Word = {
+    word: undefined
+  };
+
+  constructor(private wordService: WordService, private imageService: ImageService) { }
+
+  ngOnInit() {
+    this.getWords();
+  }
 
   @ViewChild('canvasWhiteboard') canvasWhiteboard: CanvasWhiteboardComponent;
 
-  print(){
+  submit() {
     this.canvasWhiteboard.generateCanvasData((generatedData: string) => {
-          console.log(generatedData);
-          this.image = generatedData;
-      }, "image/png", 1);
-      const fd = new FormData();
-      fd.append('image', this.image, "test-image");
-      this.http.post('https://16fcc55b-1bab-4153-938f-743595374287.mock.pstmn.io/image', fd).subscribe(res=>{console.log(res)});
-  }
-  word:string = "Word to Draw"
-
-  currentWord: Word = {
-    word:undefined
-  };
-  constructor(private wordService: WordService) { }
-  
-  ngOnInit() {
-  this.getWords();
-    
+      this.image = generatedData;
+    }, "image/png", 1);
+    const fd = new FormData();
+    fd.append('image', this.image, "test-image");
+    this.imageService.postImage(this.randWord, this.image).subscribe(res => { console.log(res) });
   }
 
-  words: Word[] = [];
-wordCount:number;
-i: number;
-randWord: string="Get a word!";
-  getWords(){
-    console.log("Hello")
+  getWords() {
     this.wordService.getWords()
-    .subscribe((allWords)=>{
+      .subscribe((allWords) => {
         this.words = allWords;
-        console.log(this.words);
-        this.wordCount=this.words.length-1;
-        this.i= Math.floor((Math.random() * this.wordCount) + 1); 
-  this.randWord=this.words[this.i].word;
-  console.log("Random word is"+ this.randWord);
+        this.wordCount = this.words.length - 1;
+        this.i = Math.floor((Math.random() * this.wordCount) + 1);
+        this.randWord = this.words[this.i].word;
       });
-      
-      
-      
-    }
-    
-count:number=0;
-    getNewWord(){
-      this.count++;
-      console.log("changing word");
-      this.wordCount=this.words.length-1;
-        this.i= Math.floor((Math.random() * this.wordCount) + 1); 
-        this.randWord=this.words[this.i].word;
-      
-      
-      
-    }
+  }
+   
+  getNewWord() {
+    this.count++;
+    this.wordCount = this.words.length - 1;
+    this.i = Math.floor((Math.random() * this.wordCount) + 1);
+    this.randWord = this.words[this.i].word;
+  }
 }
