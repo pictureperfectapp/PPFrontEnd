@@ -1,0 +1,16 @@
+.canvas_whiteboard_buttons{
+    position: relative;
+}
+
+div{
+    position: relative;
+}
+h4{
+    font-family: "Snap ITC";
+    color: rgb(9, 64, 174);
+    text-shadow:
+		-1px -1px 0 rgb(255, 255, 255),
+		1px -1px 0   rgb(255, 255, 255),
+		-1px 1px 0   rgb(255, 255, 255),
+		1px 1px 0   rgb(255, 255, 255);
+}
