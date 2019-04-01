@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { WordService } from 'src/app/services/word.service';
 import { Word } from 'src/app/models/word';
 import { ImageService } from 'src/app/services/image.service';
+import { DataPersistenceService } from 'src/app/services/data-persistence.service';
 
 @Component({
   selector: 'app-play-draw',
@@ -24,9 +25,10 @@ export class PlayDrawComponent implements OnInit {
     word: undefined
   };
 
-  constructor(private wordService: WordService, private imageService: ImageService) { }
 
+  constructor(private wordService: WordService, private imageService: ImageService, private dataTransfer: DataPersistenceService) { }
   ngOnInit() {
+    this.dataTransfer.checkForUser();
     this.getWords();
   }
 

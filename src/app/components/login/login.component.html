@@ -1,7 +1,7 @@
 <div class="container">
   <app-banner></app-banner>
   <div class="container align-content-center" id="loginForm">
-    <form action="api/login" method="post">
+    <form action="http://localhost8084/login" method="post">
       <div class="form-row justify-content-center">
         <label>Username:</label>
       </div>
@@ -21,6 +21,7 @@
       </div>
     </form>
     <br>
+    <button (click)="persistUser()">Persist!</button>
     <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
   </div>
 </div>
