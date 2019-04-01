@@ -2,7 +2,9 @@
   <div>
     <div class="form-row justify-content-center">
       <!-- <img src="https://www.ledr.com/colours/white.jpg" alt="Picture" height="400px"> -->
-      <img [src]='image'>
+      <div *ngIf="image">
+        <img [src]='image'>
+      </div>
     </div>
     <br>
     <div class="form-row justify-content-center">
