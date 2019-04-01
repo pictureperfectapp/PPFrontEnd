@@ -18,6 +18,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
 import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lob
     BrowserModule,
     AppRoutingModule,
     CanvasWhiteboardModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

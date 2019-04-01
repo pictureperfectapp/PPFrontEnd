@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
   <div class="container">
@@ -25,6 +26,34 @@
       <br>
       <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
     </div>
+=======
+<div class="container">
+  <app-banner></app-banner>
+  <div class="container align-content-center" id="loginForm">
+    <form [formGroup]="userFormGroup" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-row justify-content-center">
+        <label>Username:</label>
+      </div>
+      <div class="form-row justify-content-center">
+        <input class="inputstyle" type="text" formControlName="username" id="username" placeholder="Username">
+      </div>
+
+      <div class="form-row justify-content-center">
+        <label>Password:</label>
+      </div>
+      <div class="form-row justify-content-center">
+        <input class="inputstyle" type="password" formControlName="password" id="password" placeholder="Password">
+      </div>
+      <br>
+      <div class="form-row justify-content-center">
+        <input class="btn btn-primary" type="submit" value="login">
+      </div>
+    </form>
+  
+    <br>
+    <!-- <button (click)="persistUser()">Persist!</button> -->
+    <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
+>>>>>>> 6865da9b3c89d3c023c419f6292fd28dba21925a
   </div>
 
 
