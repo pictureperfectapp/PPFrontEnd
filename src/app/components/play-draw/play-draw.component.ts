@@ -36,7 +36,11 @@ export class PlayDrawComponent implements OnInit {
   owner: User = new User();
   opponent: User = new User();
 
+  submitted: boolean = false;
+
   onSubmit(){
+    if(!this.submitted){
+    this.submitted = true;
     this.owner.uId = +this.myStorage.getItem("userId");
     this.opponent.username = this.myStorage.getItem("opponentUsername");
     this.imageName = this.randWord+this.owner.uId+this.opponent.username;
@@ -45,14 +49,14 @@ export class PlayDrawComponent implements OnInit {
     this.currentGame.users = [];
     this.currentGame.users.push(this.owner);
     this.currentGame.users.push(this.opponent);
-    console.log(this.currentGame);
     this.gameService.createGame(this.currentGame).subscribe(game => {
       if (game.g_id != 0 && game.g_id != null) {
         this.submitPicture();
         this.myStorage.setItem("opponentUsername", "");
         this.router.navigate(['./dashboard']);
       }
-    });
+    })
+  };
   }
 
 

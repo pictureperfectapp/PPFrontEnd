@@ -20,8 +20,12 @@ export class GamesService {
     return this.http.post<Game>(this.gameUrl, game, httpOptions);
   }
 
+  getGameById(id: number): Observable<Game> {
+    return this.http.get<Game>(this.gameUrl + "/" + id, httpOptions);
+  }
+
   getGamesByUserId(id: number): Observable<Game[]> {
-    return this.http.get<Game[]>(this.gameUrl + "/" + id, httpOptions);
+    return this.http.get<Game[]>(this.gameUrl + "/resume/" + id, httpOptions);
   }
 
   updateGame(game: Game, id: number): Observable<Game> {

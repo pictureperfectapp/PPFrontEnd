@@ -7,11 +7,14 @@
             <thead class="thead-dark">
               <tr>
                 <th>Opponent</th>
-                <th>State</th>
-                <th>Turn</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody class="table-hover">
+                <tr *ngFor='let game of games'>
+                    <td>{{game.users[0].username | uppercase}} just played!</td>
+                    <td><button class="btn btn-outline-primary" (click)="resumeGame(game.g_id)">Guess</button></td>
+                  </tr>
             </tbody>
           </table>
   
