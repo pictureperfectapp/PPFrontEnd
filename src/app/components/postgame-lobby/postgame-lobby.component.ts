@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataPersistenceService } from 'src/app/services/data-persistence.service';
 
 @Component({
   selector: 'app-postgame-lobby',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostgameLobbyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataTransfer: DataPersistenceService) { }
+
 
   ngOnInit() {
+    this.dataTransfer.checkForUser();
   }
 
 }

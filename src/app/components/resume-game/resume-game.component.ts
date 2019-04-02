@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataPersistenceService } from 'src/app/services/data-persistence.service';
+import { GamesService } from 'src/app/services/games.service';
+import { Game } from 'src/app/models/game';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resume-game',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResumeGameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataTransfer: DataPersistenceService, private gameService: GamesService, private router: Router) { }
+  myStorage = window.localStorage;
+
+  games: Game[] = [];
 
   ngOnInit() {
+    this.dataTransfer.checkForUser();
+    this.retrieveGames();
   }
 
+  resumeGame(gameId: number){
+    this.myStorage.setItem("gameId", gameId.toString());
+    this.router.navigate(["./playGu"]);
+  }
+  print(str: string){
+    console.log(str);
+  }
+  retrieveGames(){
+    this.gameService.getGamesByUserId(+this.myStorage.getItem("userId")).subscribe(games => {
+      console.log(games);
+      this.games = games;
+    })
+  }
 }

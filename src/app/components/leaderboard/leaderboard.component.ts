@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataPersistenceService } from 'src/app/services/data-persistence.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataTransfer: DataPersistenceService) { }
 
   ngOnInit() {
+   this.dataTransfer.checkForUser();
   }
 
 }
