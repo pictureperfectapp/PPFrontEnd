@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     if (!user) { return; }
     this.userService.createUser(user)
       .subscribe(user => {
-        if (this.user.uId != 0) {
+        if (user.uId != 0) {
           this.router.navigate(['./dashboard']);
           console.log("Success!");
         }
