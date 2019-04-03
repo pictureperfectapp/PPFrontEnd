@@ -8,10 +8,24 @@
     </div>
     <br>
     <div class="form-row justify-content-center">
-        <input class="inputstyle" type="text" name="guess" id="guess" placeholder="Guess">
+      <div *ngIf="hiddenGuess">
+        <h1>{{hiddenGuess}}</h1>
+      </div>
     </div>
+    <br>
+    <div class="form-row justify-content-center">
+      <div *ngIf="message">
+        <h1>{{message}}</h1>
+      </div>
+    </div>
+    <br>
+    <div class="form-row justify-content-center">
+      <input class="inputstyle" type="text" [(ngModel)]="guess" name="guess" id="guess" placeholder="Guess">
+    </div>
+
     <div class="form-row justify-content-center">
       <a class="btn btn-outline-primary" routerLink="">Submit</a>
+      <a class="btn btn-outline-primary" (click)="print()">Print</a>
     </div>
   </div>
 </div>

@@ -15,8 +15,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
+  myStorage = window.localStorage;
 
   ngOnInit() {
+    if(this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != ""){
+      this.router.navigate(['./dashboard']);
+    }
   }
 
   private username: string = "";
@@ -28,6 +32,7 @@ export class RegisterComponent implements OnInit {
   
   onSubmit(){
     if(this.password1 == this.password2){
+    this.user.uId = +this.myStorage.getItem("userId");
     this.user.username = this.username;
     this.user.email = this.email;
     this.user.password = this.password1;
@@ -38,6 +43,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.user); 
   }
 
+  
   createUser(user: User): void {
     if (!user) { return; }
     this.userService.createUser(user)

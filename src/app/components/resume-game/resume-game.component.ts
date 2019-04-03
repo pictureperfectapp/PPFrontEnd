@@ -25,12 +25,9 @@ export class ResumeGameComponent implements OnInit {
     this.myStorage.setItem("gameId", gameId.toString());
     this.router.navigate(["./playGu"]);
   }
-  print(str: string){
-    console.log(str);
-  }
+ 
   retrieveGames(){
     this.gameService.getGamesByUserId(+this.myStorage.getItem("userId")).subscribe(games => {
-      console.log(games);
       this.games = games;
     })
   }

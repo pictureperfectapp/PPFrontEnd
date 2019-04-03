@@ -24,6 +24,12 @@
         <input class="inputstyle" type="email" name="email" id="email" placeholder="Email">
       </div> -->
     <br>
+
+    <div *ngIf="message">
+      <div class="form-row justify-content-center">
+        <p>{{message}}</p>
+      </div>
+    </div>
     <div class="form-row justify-content-center">
       <input class="btn btn-primary" type="submit" value="Start" (click)="onSubmit()" id="submitButton">
     </div>

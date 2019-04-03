@@ -64,6 +64,9 @@ export class PlayDrawComponent implements OnInit {
   ngOnInit() {
     this.dataTransfer.checkForUser();
     this.getWords();
+    if(this.myStorage.getItem("opponentUsername") == null || this.myStorage.getItem("opponentUsername") == ""){
+      this.router.navigate(["./dashboard"]);
+    }
   }
 
   @ViewChild('canvasWhiteboard') canvasWhiteboard: CanvasWhiteboardComponent;

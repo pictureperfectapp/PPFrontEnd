@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { JsonString } from 'src/app/models/jsonstring';
 import { DataPersistenceService } from 'src/app/services/data-persistence.service';
 import { GamesService } from 'src/app/services/games.service';
 import { Game } from 'src/app/models/game';
+import { strictEqual } from 'assert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-guess',
@@ -13,22 +15,70 @@ import { Game } from 'src/app/models/game';
 export class PlayGuessComponent implements OnInit {
 
   //banana in a box notation to check whether guess matches word || Removes the need for a button
-  constructor(private imageService: ImageService, private dataTransfer: DataPersistenceService, private gameService: GamesService) { }
+  constructor(private imageService: ImageService, private dataTransfer: DataPersistenceService, private gameService: GamesService,  private router: Router) { }
 
   myStorage = window.localStorage;
-  currentGame: Game = new Game();
-
-  ngOnInit() {
-    this.dataTransfer.checkForUser();
-    if (this.myStorage.getItem("gameId") != null && this.myStorage.getItem("gameId") != "") {
-      this.getGame(+this.myStorage.getItem("gameId"));
-    }
-  }
-
+  currentGame: Game;
+  hiddenGuess: string;
   imageName: string = "";
   image: any;
   readonly imageType: string = 'data:image/PNG;base64,';
 
+  message: string;
+  guessNum: number = 0;
+  private guess: string = "";
+
+  print(){
+    this.guessNum = this.guessNum +1;
+    this.guesses.push(this.guess);
+    if(this.guess == this.currentGame.word){
+      this.currentGame.guess = "correct";
+      this.currentGame.users[0].points =  this.currentGame.users[0].points + (4 - this.guessNum);
+      this.currentGame.users[1].points =  this.currentGame.users[1].points + (4 - this.guessNum);
+      this.updateGame();
+    } else if(this.guessNum < 3){
+    this.message = "Try again, guess " + this.guessNum +"/3."
+    } else{
+      this.currentGame.guess = "wrong";
+      this.updateGame();
+    }
+  }
+
+  guesses: string[] = [];
+  guessesString: string = "";
+  convertGuesses(){
+    console.log(this.guesses.length);
+    for(let i = 0; i<this.guesses.length; i++){
+      this.guessesString += " " + this.guesses[i] ;
+    }
+  }
+  updateGame(){
+    this.gameService.updateGame(this.currentGame, this.currentGame.g_id)
+    .subscribe(res => {
+      console.log(res);
+      this.convertGuesses();
+      this.myStorage.setItem("word", res.word);
+      this.myStorage.setItem("guesses", this.guessesString);
+      this.router.navigate(["./postGame"]);
+    })
+  }
+  ngOnInit() {
+    this.dataTransfer.checkForUser(); 
+    if (this.myStorage.getItem("gameId") == null || this.myStorage.getItem("gameId") == "") {
+      this.router.navigate(["./dashboard"]);
+    }else {
+      this.getGame(+this.myStorage.getItem("gameId"));
+      this.myStorage.setItem("gameId", "");
+    }
+  }
+
+  
+  submitGame(){
+    console.log(this.guess);
+    // this.gameService.updateGame(this.currentGame, this.currentGame.g_id).subscribe(res =>{
+    //   console.log(res);
+    // })
+  }
 
   getImage(image: string) {
     this.imageService.getImage(image)
@@ -37,11 +87,22 @@ export class PlayGuessComponent implements OnInit {
       })
   }
 
+
+
   getGame(id: number){
     this.gameService.getGameById(id)
     .subscribe((game: Game) => {
       this.currentGame = game;
       this.getImage(this.currentGame.picture);
-    })
+      this.hiddenGuess = this.hideWord(this.currentGame.word);
+    });
+  }
+
+  hideWord(word: string){
+    let newS = "";
+    for( let i = 0; i < word.length; i++){
+      newS += "_ "; 
+    }
+    return newS;
   }
 }

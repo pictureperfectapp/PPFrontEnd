@@ -46,18 +46,19 @@ export class UpdateProfileComponent implements OnInit {
     this.user.email = this.email;
     this.user.password = this.password1;
     this.user.uId = +this.myStorage.getItem("userId");
-    this.createUser(this.user);
+    this.updateUser(this.user);
     } else {
       console.log("Password do not match");
     }
     console.log(this.user); 
   }
 
-  createUser(user: User): void {
+  updateUser(user: User): void {
     if (!user) { return; }
-    this.userService.createUser(user)
+    this.userService.updateUser(user, user.uId)
       .subscribe(user => {
-        if (this.user.uId != 0) {
+        if (user.uId != 0) {
+          this.myStorage.setItem("username", user.username);
           this.router.navigate(['./dashboard']);
           console.log("Success!");
         }
