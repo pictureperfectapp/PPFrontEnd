@@ -13,6 +13,13 @@
         <th>Wins</th>
         <th>Points</th>
       </tr>
+      <tr *ngFor='let player of players; let i =index'>
+        <td>{{i+1}}</td>
+        <td>{{player.username}}</td>
+        <td>{{player.gamesPlayed}}</td>
+        <td>{{player.wins}}</td>
+        <td>{{player.points}}</td>
+      </tr>
     </thead>
     <tbody>
     </tbody>

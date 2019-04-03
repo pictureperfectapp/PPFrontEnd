@@ -1,5 +1,6 @@
 <div class="container">
   <app-banner></app-banner>
+  
   <div class="container align-content-center" id="loginForm">
       <div class="form-row justify-content-center">
         <label>Username:</label>
@@ -24,6 +25,12 @@
       </div>
       <div class="form-row justify-content-center">
         <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2" placeholder="Re-enter Password">
+      </div>
+      <br>
+      <div *ngIf="message">
+        <div class="form-row justify-content-center" style="color:red">
+          <p>{{message}}</p>
+        </div>
       </div>
       <br>
       <div class="form-row justify-content-center">
