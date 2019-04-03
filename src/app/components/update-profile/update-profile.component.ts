@@ -27,9 +27,10 @@ export class UpdateProfileComponent implements OnInit {
   private user: User = new User();
 
   onSubmit() {
-    if (this.username == "" || this.email == "" || this.password1 == "" || this.password2 == "") {
-      this.message = "Fill out at least one input.";
-    } else if (this.password1 == this.password2) {
+    // if (this.username == "" || this.email == "" || this.password1 == "" || this.password2 == "") {
+    //   this.message = "Fill out at least one input.";
+    // } else 
+    if (this.password1 == this.password2) {
         this.user.username = this.username.trim();
         this.user.email = this.email.trim();
         this.user.password = this.password1;
@@ -44,6 +45,7 @@ export class UpdateProfileComponent implements OnInit {
     if (!user) { return; }
     this.userService.updateUser(user, user.uId)
       .subscribe(res => {
+        console.log(res);
         if (user.uId != 0) {
           this.myStorage.setItem("username", user.username);
           this.message = "Redirecting to dashboard.";

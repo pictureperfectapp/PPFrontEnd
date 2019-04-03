@@ -32,7 +32,8 @@ export class PlayGuessComponent implements OnInit {
     this.guessNum = this.guessNum +1;
     this.guesses.push(this.guess);
     if(this.guess.toLowerCase() == this.currentGame.word.toLowerCase()){
-      this.currentGame.guess = "correct";
+      this.convertGuesses();
+      this.currentGame.guess = this.guessesString;
       this.currentGame.users[0].points =  this.currentGame.users[0].points + (4 - this.guessNum);
       this.currentGame.users[1].points =  this.currentGame.users[1].points + (4 - this.guessNum);
       this.updateGame();
@@ -54,7 +55,6 @@ export class PlayGuessComponent implements OnInit {
   updateGame(){
     this.gameService.updateGame(this.currentGame, this.currentGame.g_id)
     .subscribe(res => {
-      this.convertGuesses();
       this.myStorage.setItem("word", res.word);
       this.myStorage.setItem("guesses", this.guessesString);
       this.router.navigate(["./postGame"]);
