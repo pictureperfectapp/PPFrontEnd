@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   this.retrieveUserInfo(+this.myStorage.getItem("userId"));  
 }
 
-private ogUser: User = new User();
+ogUser: User = new User();
 
   retrieveUserInfo(id: number){
     if (!id) { return; }

@@ -10,15 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'PicPFrontEnd';
-  constructor(private dataTransfer: DataPersistenceService, public router: Router){}
+  constructor(public router: Router){}
 
-  // userInfo: UserInfo = {
-  //   userId: 0,
-  //   userName: "Parent"
-  // }
-  
   ngOnInit() {
-    // this.dataTransfer.sendAnything(this.userInfo);
+    this.router.navigate(["./login"]);
     }
 
 }

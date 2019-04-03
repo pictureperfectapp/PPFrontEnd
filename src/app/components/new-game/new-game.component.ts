@@ -11,7 +11,7 @@ export class NewGameComponent implements OnInit {
 
   constructor(private dataTransfer: DataPersistenceService, private router: Router) { }
 
-  private opponentUsername: string = "";
+  opponentUsername: string = "";
   myStorage = window.localStorage;
   message: string;
 

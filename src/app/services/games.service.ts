@@ -15,7 +15,8 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
-  gameUrl: string = "http://localhost:8084/games";
+  // gameUrl: string = "http://localhost:8084/games";
+ gameUrl: string = "http://18.222.227.121:8085/PicturePerfect/games";
 
   createGame(game: Game): Observable<Game> {
     return this.http.post<Game>(this.gameUrl, game, httpOptions);

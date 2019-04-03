@@ -18,13 +18,13 @@ export class UpdateProfileComponent implements OnInit {
     this.dataTransfer.checkForUser();
   }
 
-  private myStorage = window.localStorage;
+  myStorage = window.localStorage;
   message: string;
-  private username: string = "";
-  private email: string = "";
-  private password1: string = "";
-  private password2: string = "";
-  private user: User = new User();
+  username: string = "";
+  email: string = "";
+  password1: string = "";
+  password2: string = "";
+  user: User = new User();
 
   onSubmit() {
     // if (this.username == "" || this.email == "" || this.password1 == "" || this.password2 == "") {
