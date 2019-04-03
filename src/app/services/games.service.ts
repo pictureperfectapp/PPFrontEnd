@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Game } from '../models/game';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,13 +13,14 @@ const httpOptions = {
 })
 export class GamesService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   gameUrl: string = "http://localhost:8084/games";
 
   createGame(game: Game): Observable<Game> {
     return this.http.post<Game>(this.gameUrl, game, httpOptions);
   }
+
 
   getGameById(id: number): Observable<Game> {
     return this.http.get<Game>(this.gameUrl + "/" + id, httpOptions);

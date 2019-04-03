@@ -13,19 +13,19 @@ export class NewGameComponent implements OnInit {
 
   private opponentUsername: string = "";
   myStorage = window.localStorage;
-
+  message: string;
 
   ngOnInit() {
     this.dataTransfer.checkForUser();
   }
 
   onSubmit() {
-    if (this.opponentUsername != "" && this.opponentUsername != null) {
+    if (this.opponentUsername != "" && this.opponentUsername != null && this.opponentUsername != this.myStorage.getItem("username")) {
       // Use user-service to check that opponent exists
       this.myStorage.setItem("opponentUsername", this.opponentUsername);
       this.router.navigate(['./playDr']);
     } else {
-      console.log("Please enter an opponent.")
+      this.message = "Please enter a valid opponent.";
     }
   }
 }

@@ -12,8 +12,9 @@
             </thead>
             <tbody class="table-hover">
                 <tr *ngFor='let game of games'>
-                    <td>{{game.users[0].username | uppercase}} just played!</td>
-                    <td><button class="btn btn-outline-primary" (click)="resumeGame(game.g_id)">Guess</button></td>
+                    <td *ngIf="currentUsername == game.users[0].username">{{game.users[1].username | uppercase}} just guessed!</td>
+                    <td *ngIf="currentUsername != game.users[0].username">{{game.users[0].username | uppercase}} just drew!</td>
+                    <td><button class="btn btn-outline-primary" (click)="resumeGame(game)">View Game</button></td>
                   </tr>
             </tbody>
           </table>

@@ -16,51 +16,48 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit() {
     this.dataTransfer.checkForUser();
-    console.log(this.myStorage.getItem("userId"));
-    // this.retrieveUserInfo(+this.myStorage.getItem("userId"));
   }
 
   private myStorage = window.localStorage;
-
+  message: string;
   private username: string = "";
   private email: string = "";
   private password1: string = "";
   private password2: string = "";
   private user: User = new User();
-  // private ogUser: User = new User();
 
-  // retrieveUserInfo(id: number){
-  //   if (!id) { return; }
-  //   this.userService.getUserById(id)
-  //     .subscribe(userInformation => {
-  //       if (userInformation.uId != 0) {
-  //         this.ogUser = userInformation;
-  //         console.log(this.ogUser);
-  //       }
-  //     });
-  // }
-
-  onSubmit(){
-    if(this.password1 == this.password2){
-    this.user.username = this.username;
-    this.user.email = this.email;
-    this.user.password = this.password1;
-    this.user.uId = +this.myStorage.getItem("userId");
-    this.createUser(this.user);
-    } else {
-      console.log("Password do not match");
-    }
-    console.log(this.user); 
+  onSubmit() {
+    // if (this.username == "" || this.email == "" || this.password1 == "" || this.password2 == "") {
+    //   this.message = "Fill out at least one input.";
+    // } else 
+    if (this.password1 == this.password2) {
+        this.user.username = this.username.trim();
+        this.user.email = this.email.trim();
+        this.user.password = this.password1;
+        this.user.uId = +this.myStorage.getItem("userId");
+        this.updateUser(this.user);
+      } else {
+        this.message = "Password do not match.";
+      }
   }
 
-  createUser(user: User): void {
+  updateUser(user: User): void {
     if (!user) { return; }
-    this.userService.createUser(user)
-      .subscribe(user => {
-        if (this.user.uId != 0) {
+    this.userService.updateUser(user, user.uId)
+      .subscribe(res => {
+        console.log(res);
+        if (user.uId != 0) {
+          this.myStorage.setItem("username", user.username);
+          this.message = "Redirecting to dashboard.";
           this.router.navigate(['./dashboard']);
-          console.log("Success!");
         }
-      });
+      },
+        err => {
+          if (err.status == 409) {
+            this.message = "Username/Email is already present."
+          } else {
+            this.message = "Status code: " + err.status;
+          }
+        });
   }
 }

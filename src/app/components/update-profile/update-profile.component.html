@@ -26,6 +26,12 @@
         <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2" placeholder="Re-enter Password">
       </div>
       <br>
+      <div *ngIf="message">
+        <div class="form-row justify-content-center" style="color:red">
+          <p>{{message}}</p>
+        </div>
+      </div>
+      <br>
       <div class="form-row justify-content-center">
         <input class="btn btn-primary" type="submit" value="Update" (click)="onSubmit()" id="submitButton">
       </div>
