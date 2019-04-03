@@ -16,42 +16,45 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   myStorage = window.localStorage;
-
-  ngOnInit() {
-    if(this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != ""){
-      this.router.navigate(['./dashboard']);
-    }
-  }
-
+  message: string;
   private username: string = "";
   private email: string = "";
   private password1: string = "";
   private password2: string = "";
   private user: User = new User();
 
-  
-  onSubmit(){
-    if(this.password1 == this.password2){
-    this.user.uId = +this.myStorage.getItem("userId");
-    this.user.username = this.username;
-    this.user.email = this.email;
-    this.user.password = this.password1;
-    this.createUser(this.user);
-    } else {
-      console.log("Password do not match");
+  ngOnInit() {
+    if (this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != "") {
+      this.router.navigate(['./dashboard']);
     }
-    console.log(this.user); 
   }
 
-  
+  onSubmit() {
+    if (this.username == "" || this.email == "" || this.password1 == "" || this.password2 == "") {
+      this.message = "Inputs are missing.";
+    } else if (this.password1 == this.password2) {
+      this.user.uId = +this.myStorage.getItem("userId");
+      this.user.username = this.username.trim();
+      this.user.email = this.email.trim();
+      this.user.password = this.password1;
+      this.createUser(this.user);
+    } else {
+      this.message = "Password do not match.";
+    }
+  }
+
+
   createUser(user: User): void {
     if (!user) { return; }
     this.userService.createUser(user)
-      .subscribe(user => {
-        if (user.uId != 0) {
-          this.router.navigate(['./dashboard']);
-          console.log("Success!");
-        }
-      });
+      .subscribe(res =>
+        this.router.navigate(["./login"]),
+        err => {
+          if(err.status == 409){
+            this.message = err.status + "Username/Email is already present."
+          }else {
+            this.message = "Status code: " + err.status;
+          }
+        });
   }
 }

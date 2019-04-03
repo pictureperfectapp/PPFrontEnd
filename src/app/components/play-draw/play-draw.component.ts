@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
 })
 export class PlayDrawComponent implements OnInit {
 
+  constructor(private wordService: WordService, private imageService: ImageService, private dataTransfer: DataPersistenceService, private gameService: GamesService, private router: Router) { }
+
   image: string = "";
   count: number = 0;
   words: Word[] = [];
@@ -38,33 +40,34 @@ export class PlayDrawComponent implements OnInit {
 
   submitted: boolean = false;
 
-  onSubmit(){
-    if(!this.submitted){
-    this.submitted = true;
-    this.owner.uId = +this.myStorage.getItem("userId");
-    this.opponent.username = this.myStorage.getItem("opponentUsername");
-    this.imageName = this.randWord+this.owner.uId+this.opponent.username;
-    this.currentGame.word = this.randWord;
-    this.currentGame.picture = this.imageName;
-    this.currentGame.users = [];
-    this.currentGame.users.push(this.owner);
-    this.currentGame.users.push(this.opponent);
-    this.gameService.createGame(this.currentGame).subscribe(game => {
-      if (game.g_id != 0 && game.g_id != null) {
-        this.submitPicture();
-        this.myStorage.setItem("opponentUsername", "");
+  onSubmit() {
+    if (!this.submitted) {
+      this.submitted = true;
+      this.owner.uId = +this.myStorage.getItem("userId");
+      this.opponent.username = this.myStorage.getItem("opponentUsername");
+      this.imageName = this.randWord + this.owner.uId + this.opponent.username;
+      this.currentGame.word = this.randWord;
+      this.currentGame.picture = this.imageName;
+      this.currentGame.users = [];
+      this.currentGame.users.push(this.owner);
+      this.currentGame.users.push(this.opponent);
+      this.gameService.createGame(this.currentGame).subscribe(game => {
+        if (game.g_id != 0 && game.g_id != null) {
+          this.submitPicture();
+          this.myStorage.setItem("opponentUsername", "");
+          this.router.navigate(['./dashboard']);
+        }
+      },
+      err => {
         this.router.navigate(['./dashboard']);
-      }
-    })
-  };
+      })
+    };
   }
 
-
-  constructor(private wordService: WordService, private imageService: ImageService, private dataTransfer: DataPersistenceService, private gameService: GamesService, private router: Router) { }
   ngOnInit() {
     this.dataTransfer.checkForUser();
     this.getWords();
-    if(this.myStorage.getItem("opponentUsername") == null || this.myStorage.getItem("opponentUsername") == ""){
+    if (this.myStorage.getItem("opponentUsername") == null || this.myStorage.getItem("opponentUsername") == "") {
       this.router.navigate(["./dashboard"]);
     }
   }
@@ -89,7 +92,7 @@ export class PlayDrawComponent implements OnInit {
         this.randWord = this.words[this.i].word;
       });
   }
-   
+
   getNewWord() {
     this.count++;
     this.wordCount = this.words.length - 1;

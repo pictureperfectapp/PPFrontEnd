@@ -16,13 +16,18 @@
         <input class="inputstyle" type="password" formControlName="password" id="password" placeholder="Password">
       </div>
       <br>
+      <div *ngIf="message">
+        <div class="form-row justify-content-center" style="color:red">
+          <p>{{message}}</p>
+        </div>
+      </div>
+      <br>
       <div class="form-row justify-content-center">
         <input class="btn btn-primary" type="submit" value="login">
       </div>
     </form>
   
     <br>
-    <!-- <button (click)="persistUser()">Persist!</button> -->
     <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
   </div>
 </div>

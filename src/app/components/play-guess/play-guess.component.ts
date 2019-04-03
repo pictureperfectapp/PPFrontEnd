@@ -31,7 +31,7 @@ export class PlayGuessComponent implements OnInit {
   print(){
     this.guessNum = this.guessNum +1;
     this.guesses.push(this.guess);
-    if(this.guess == this.currentGame.word){
+    if(this.guess.toLowerCase() == this.currentGame.word.toLowerCase()){
       this.currentGame.guess = "correct";
       this.currentGame.users[0].points =  this.currentGame.users[0].points + (4 - this.guessNum);
       this.currentGame.users[1].points =  this.currentGame.users[1].points + (4 - this.guessNum);
@@ -47,7 +47,6 @@ export class PlayGuessComponent implements OnInit {
   guesses: string[] = [];
   guessesString: string = "";
   convertGuesses(){
-    console.log(this.guesses.length);
     for(let i = 0; i<this.guesses.length; i++){
       this.guessesString += " " + this.guesses[i] ;
     }
@@ -55,11 +54,13 @@ export class PlayGuessComponent implements OnInit {
   updateGame(){
     this.gameService.updateGame(this.currentGame, this.currentGame.g_id)
     .subscribe(res => {
-      console.log(res);
       this.convertGuesses();
       this.myStorage.setItem("word", res.word);
       this.myStorage.setItem("guesses", this.guessesString);
       this.router.navigate(["./postGame"]);
+    },
+    err => {
+      this.router.navigate(["./dashboard"]);
     })
   }
   ngOnInit() {
@@ -72,13 +73,6 @@ export class PlayGuessComponent implements OnInit {
     }
   }
 
-  
-  submitGame(){
-    console.log(this.guess);
-    // this.gameService.updateGame(this.currentGame, this.currentGame.g_id).subscribe(res =>{
-    //   console.log(res);
-    // })
-  }
 
   getImage(image: string) {
     this.imageService.getImage(image)

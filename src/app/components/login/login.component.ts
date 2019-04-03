@@ -23,32 +23,38 @@ export class LoginComponent implements OnInit {
     password: new FormControl()
   })
 
-  onSubmit(){
+  onSubmit() {
     this.user = new User(this.userFormGroup.value);
     this.login(this.user);
   }
 
   ngOnInit() {
-    if(this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != ""){
+    if (this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != "") {
       this.router.navigate(['./dashboard']);
     }
   }
 
 
   myStorage = window.localStorage;
-
+  message: string;
 
   login(userInformation: User): void {
-    if (!userInformation) { return; }
-    this.loginService.login(userInformation)
-      .subscribe(userInformation => {
-        if (userInformation.uId != 0) {
-          console.log(userInformation);
-          this.myStorage.setItem("username", userInformation.username);
-          this.myStorage.setItem("userId", userInformation.uId.toString());
+    if (userInformation.username == "" || userInformation.username == null || userInformation.password == "" || userInformation.password == null) {
+      this.message = "Inputs are missing.";
+    } else {
+      this.loginService.login(userInformation)
+      .subscribe(res => {
+        if (res.uId != 0 && res.uId != null) {
+          this.myStorage.setItem("username", res.username);
+          this.myStorage.setItem("userId", res.uId.toString());
           this.router.navigate(['./dashboard']);
+        }else{
+          this.message = "Invalid username/password.";
+        }
+        err => {
+          this.message = "Invalid username/password.";
         }
       });
+    }
   }
-
 }
