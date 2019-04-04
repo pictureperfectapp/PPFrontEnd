@@ -20,7 +20,13 @@ export class DataPersistenceService {
   }
 
   checkForUser(){
-    if(this.myStorage.getItem("userId") == ""){
+    if(this.myStorage.getItem("userId") == "" || this.myStorage.getItem("userId") == null){
+      this.router.navigate(["/login"]);
+    }
+  }
+
+  checkForAdmin(){
+    if(this.myStorage.getItem("admin") == "" || this.myStorage.getItem("admin") == null || this.myStorage.getItem("admin") != "Admin"){
       this.router.navigate(["/login"]);
     }
   }

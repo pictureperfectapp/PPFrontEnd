@@ -19,6 +19,7 @@ import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
 import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UpdateProfileComponent,
     NewGameComponent,
     ResumeGameComponent,
-    PostgameLobbyComponent
+    PostgameLobbyComponent,
+    AdminDashboardComponent
 
   ],
   imports: [

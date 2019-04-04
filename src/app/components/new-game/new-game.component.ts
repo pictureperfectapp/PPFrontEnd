@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataPersistenceService } from 'src/app/services/data-persistence.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-new-game',
@@ -9,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class NewGameComponent implements OnInit {
 
-  constructor(private dataTransfer: DataPersistenceService, private router: Router) { }
+  constructor(private dataTransfer: DataPersistenceService, private router: Router, private userService: UserService) { }
 
-  private opponentUsername: string = "";
+  opponentUsername: string = "";
   myStorage = window.localStorage;
   message: string;
 
@@ -21,9 +22,21 @@ export class NewGameComponent implements OnInit {
 
   onSubmit() {
     if (this.opponentUsername != "" && this.opponentUsername != null && this.opponentUsername != this.myStorage.getItem("username")) {
-      // Use user-service to check that opponent exists
-      this.myStorage.setItem("opponentUsername", this.opponentUsername);
-      this.router.navigate(['./playDr']);
+      this.userService.getUserByUsername(this.opponentUsername).subscribe(res => {
+        if(res != null && res.username == this.opponentUsername && res.admin != "ban"){
+          this.myStorage.setItem("opponentUsername", this.opponentUsername);
+          this.router.navigate(['./playDr']);
+        } else if (res != null && res.username == this.opponentUsername && res.admin == "ban"){
+          this.message = "User was banned.";
+        }
+        else{
+          this.message = "User not found.";
+        }
+      },
+      err => {
+        this.message = "Unable to retrieve opponent.";
+      })
+
     } else {
       this.message = "Please enter a valid opponent.";
     }
