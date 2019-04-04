@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-5" style="text-align:center">Welcome back {{username}}</h1>
+    <img id="pencil" src="http://www.clker.com/cliparts/i/Z/9/8/F/V/blue-pencil-hi.png" />
+    <hr>
+  </div>
+  <div class="form-row justify-content-center">
+    <button class="btn btn-outline-primary" (click)="logout()">Logout</button>
+  </div>
+  <br>
+  <div class="form-row justify-content-center">
+    <input class="inputstyle" type="text" [(ngModel)]="gameId" name="gameId" placeholder="Game Id"> <input class="btn btn-primary" type="submit" value="Delete Game" (click)="onSubmit()">
+  </div>
+  <div class="form-row justify-content-center">
+    <input class="inputstyle" type="text" [(ngModel)]="userUsername" name="userUsername" placeholder="Username"> <input class="btn btn-primary" type="submit" value="Ban" (click)="banUser()">
+  </div>
+  <div *ngIf="message">
+    <div class="form-row justify-content-center" style="color:red">
+      <p>{{message}}</p>
+    </div>
+  </div>
+  <h4>Games:</h4>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Game Id</th>
+        <th>Players</th>
+        <th>Word</th>
+        <th>Guesses</th>
+        <th>View Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games">
+        <td>{{game.g_id}}</td>
+        <td>{{game.users[0].username}} {{game.users[1].username}}</td>
+        <td>{{game.word}}</td>
+        <td>{{game.guess}}</td>
+        <td><button class="btn btn-outline-primary" (click)="viewImage(game)">View image</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- The Modal -->
+  <div id="myModal" class="modal" *ngIf="image" (click)="hide()">
+    <span class="close">&times;</span>
+    <div>
+      <img [src]='image' class="modal-content">
+    </div>
+    <h3 id="caption">{{word}}</h3>
+  </div>
+</div>

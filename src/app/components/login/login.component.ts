@@ -44,10 +44,17 @@ export class LoginComponent implements OnInit {
     } else {
       this.loginService.login(userInformation)
       .subscribe(res => {
-        if (res.uId != 0 && res.uId != null) {
+        if(res.uId != 0 && res.uId != null && res.admin == "Admin"){
+          this.myStorage.setItem("username", res.username);
+          this.myStorage.setItem("userId", res.uId.toString());
+          this.myStorage.setItem("admin", "Admin");
+          this.router.navigate(['./adminDashboard']);
+        }else if (res.uId != 0 && res.uId != null && res.admin != "ban") {
           this.myStorage.setItem("username", res.username);
           this.myStorage.setItem("userId", res.uId.toString());
           this.router.navigate(['./dashboard']);
+        } else if(res.admin != null && res.admin == "ban"){
+          this.message = "User was banned.";
         }else{
           this.message = "Invalid username/password.";
         }

@@ -40,7 +40,8 @@ export class PlayGuessComponent implements OnInit {
     } else if(this.guessNum < 3){
     this.message = "Try again, guess " + this.guessNum +"/3."
     } else{
-      this.currentGame.guess = "wrong";
+      this.convertGuesses();
+      this.currentGame.guess = this.guessesString;
       this.updateGame();
     }
   }

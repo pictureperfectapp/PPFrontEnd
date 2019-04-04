@@ -15,8 +15,16 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
-  // gameUrl: string = "http://localhost:8084/games";
- gameUrl: string = "http://18.222.227.121:8085/PicturePerfect/games";
+  gameUrl: string = "http://localhost:8084/games";
+//  gameUrl: string = "http://18.222.227.121:8085/PicturePerfect/games";
+
+  getAllGames(): Observable<Game []>{
+    return this.http.get<Game []>(this.gameUrl, httpOptions);
+  }
+
+  deleteGame(id: string): Observable<Game>{
+    return this.http.delete<Game>(this.gameUrl + "/" + id, httpOptions);
+  }
 
   createGame(game: Game): Observable<Game> {
     return this.http.post<Game>(this.gameUrl, game, httpOptions);
