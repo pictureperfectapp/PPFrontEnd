@@ -14,8 +14,8 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  userUrl: string = "http://localhost:8084/users";
-  // userUrl: string = "http://18.222.227.121:8085/PicturePerfect/users";
+  // userUrl: string = "http://localhost:8084/users";
+  userUrl: string = "http://18.222.227.121:8085/PicturePerfect/users";
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user, httpOptions);

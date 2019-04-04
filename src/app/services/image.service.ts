@@ -12,8 +12,8 @@ const httpOptions = {
 })
 export class ImageService {
 
-  serviceUrl: string = "http://localhost:8084/image/";
-  // serviceUrl: string = "http://18.222.227.121:8085/PicturePerfect/image";
+  // serviceUrl: string = "http://localhost:8084/image/";
+  serviceUrl: string = "http://18.222.227.121:8085/PicturePerfect/image";
   constructor(private http: HttpClient) { }
 
   getImage(imageName: string) : Observable<JsonString> {
