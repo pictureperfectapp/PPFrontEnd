@@ -25,7 +25,7 @@ export class PlayDrawComponent implements OnInit {
   words: Word[] = [];
   wordCount: number;
   i: number;
-  randWord: string = "Get a word!";
+  randWord: string = "word";
   imageName: string = "";
 
   currentWord: Word = {

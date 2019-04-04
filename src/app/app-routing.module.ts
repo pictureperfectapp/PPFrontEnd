@@ -12,8 +12,12 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { ResumeGameComponent } from './components/resume-game/resume-game.component';
 import { PostgameLobbyComponent } from './components/postgame-lobby/postgame-lobby.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [{
+  path: 'adminDashboard',
+  component: AdminDashboardComponent
+},{
   path: 'postGame',
   component: PostgameLobbyComponent
 },{

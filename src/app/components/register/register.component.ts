@@ -17,11 +17,11 @@ export class RegisterComponent implements OnInit {
 
   myStorage = window.localStorage;
   message: string;
-  private username: string = "";
-  private email: string = "";
-  private password1: string = "";
-  private password2: string = "";
-  private user: User = new User();
+  username: string = "";
+  email: string = "";
+  password1: string = "";
+  password2: string = "";
+  user: User = new User();
 
   ngOnInit() {
     if (this.myStorage.getItem("userId") != null && this.myStorage.getItem("userId") != "") {

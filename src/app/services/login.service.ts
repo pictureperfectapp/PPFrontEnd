@@ -15,7 +15,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  loginUrl: string = "http://localhost:8084/login";
+  // loginUrl: string = "http://localhost:8084/login";
+  loginUrl: string = "http://18.222.227.121:8085/PicturePerfect/login";
 
   login (user: User): Observable<User> {
     return this.http.post<User>(this.loginUrl, user, httpOptions);
