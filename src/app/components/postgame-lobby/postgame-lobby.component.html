@@ -5,15 +5,23 @@
     <hr>
   </div>
   <br>
-  <br>
   <div class="form-row justify-content-center">
-    <h4>The word was: {{word}}</h4>
+    <h4>The word was: "<b>{{word}}</b>"</h4>
+    <br>
     <br>
   </div>
   <div class="form-row justify-content-center">
-    <br>
-    <h4>Guesses: {{guesses}}.</h4>
+    <h4>Guesses:</h4>
+
   </div>
+  <div class="form-row justify-content-center">
+    <ul>
+      <li *ngFor="let li of listL">"<b>{{li}}</b>"</li>
+    </ul>
+  </div>
+
   <br><br>
-  <a class="btn btn-outline-primary" routerLink="/dashboard">Back to Dashboard</a>
+  <div class="form-row justify-content-center">
+    <a class="btn btn-primary" routerLink="/dashboard">Back to Dashboard</a>
+  </div>
 </div>

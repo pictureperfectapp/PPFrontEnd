@@ -1,40 +1,48 @@
 <app-banner></app-banner>
+<div class="container align-content-center">
   <div class="container align-content-center">
-    <div class="container align-content-center" >
-      <div class="form-row justify-content-center">
+    <!-- <div class="form-row justify-content-center">
         <label>Username:</label>
-      </div>
-      <div class="form-row justify-content-center">
-        <input class="inputstyle" type="text" [(ngModel)]="username" id="username" placeholder="Username">
-      </div>
-      <div class="form-row justify-content-center">
-        <label>Email:</label>
-      </div>
-      <div class="form-row justify-content-center">
-        <input class="inputstyle" type="text"  [(ngModel)]="email" id="email" placeholder="Email">
-      </div>
-      <div class="form-row justify-content-center">
-        <label>Password:</label>
-      </div>
-      <div class="form-row justify-content-center">
-        <input class="inputstyle" type="password" [(ngModel)]="password1" id="password" placeholder="Password">
-      </div>
-      <div class="form-row justify-content-center">
-        <label>Re-enter Password:</label>
-      </div>
-      <div class="form-row justify-content-center">
-        <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2" placeholder="Re-enter Password">
-      </div>
-      <br>
-      <div *ngIf="message">
-        <div class="form-row justify-content-center" style="color:red">
-          <p>{{message}}</p>
-        </div>
-      </div>
-      <br>
-      <div class="form-row justify-content-center">
-        <input class="btn btn-primary" type="submit" value="Update" (click)="onSubmit()" id="submitButton">
-      </div>
+      </div> -->
     <br>
-    <a routerLink="/profile">Back to profile</a>
-</div>
+    <div class="form-row justify-content-center">
+      <input class="inputstyle" type="text" [(ngModel)]="username" id="username" placeholder="Username">
+    </div>
+    <br>
+    <!-- <div class="form-row justify-content-center">
+        <label>Email:</label>
+      </div> -->
+    <div class="form-row justify-content-center">
+      <input class="inputstyle" type="text" [(ngModel)]="email" id="email" placeholder="Email">
+    </div>
+    <br>
+    <!-- <div class="form-row justify-content-center">
+        <label>Password:</label>
+      </div> -->
+    <div class="form-row justify-content-center">
+      <input class="inputstyle" type="password" [(ngModel)]="password1" id="password" placeholder="Password">
+    </div>
+    <br>
+    <!-- <div class="form-row justify-content-center">
+        <label>Re-enter Password:</label>
+      </div> -->
+    <div class="form-row justify-content-center">
+      <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2"
+        placeholder="Re-enter Password">
+    </div>
+    <br>
+    <div *ngIf="message">
+      <div class="form-row justify-content-center" style="color:red">
+        <p>{{message}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="form-row justify-content-center">
+      <input class="btn btn-primary" type="submit" value="Update" (click)="onSubmit()" id="submitButton">
+    </div>
+    <br>
+    <div class="form-row justify-content-center">
+      <a class="btn btn-primary" routerLink="/profile">Back to profile</a>
+    </div>
+
+  </div>

@@ -22,3 +22,7 @@ h1{
 .table .thead-dark th {
     background-color: lightsteelblue;
 }
+
+.btn-primary{
+    background-color: #4f45ca;
+}

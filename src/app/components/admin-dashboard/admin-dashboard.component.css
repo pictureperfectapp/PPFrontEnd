@@ -130,3 +130,7 @@ h1 {
     width: 100%;
   }
 }
+
+.btn-primary{
+  background-color: #4f45ca;
+}

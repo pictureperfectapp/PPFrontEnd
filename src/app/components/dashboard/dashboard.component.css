@@ -1,0 +1,15 @@
+a {
+    width: 25rem;
+ }
+
+ button {
+    width: 25rem;
+ }
+
+ input[type=submit] {
+    width: 25rem;
+ } 
+
+ .btn-primary{
+    background-color: #4f45ca;
+}

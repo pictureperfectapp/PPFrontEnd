@@ -2,16 +2,17 @@
   <app-banner></app-banner>
   <div class="container align-content-center" id="loginForm">
     <form [formGroup]="userFormGroup" (ngSubmit)="onSubmit()" novalidate>
-      <div class="form-row justify-content-center">
+      <!-- <div class="form-row justify-content-center">
         <label>Username:</label>
-      </div>
+      </div> -->
+      <br>
       <div class="form-row justify-content-center">
         <input class="inputstyle" type="text" formControlName="username" id="username" placeholder="Username">
       </div>
-
-      <div class="form-row justify-content-center">
+      <br>
+      <!-- <div class="form-row justify-content-center">
         <label>Password:</label>
-      </div>
+      </div> -->
       <div class="form-row justify-content-center">
         <input class="inputstyle" type="password" formControlName="password" id="password" placeholder="Password">
       </div>
@@ -26,8 +27,11 @@
         <input class="btn btn-primary" type="submit" value="login">
       </div>
     </form>
-  
+
     <br>
-    <span>Don't have an account? </span><a routerLink="/register">Register Here!</a>
+
+    <div class="form-row justify-content-center">
+        <span>Don't have an account?&nbsp;</span><a routerLink="/register">Register Here!</a>      </div>
+    
   </div>
 </div>

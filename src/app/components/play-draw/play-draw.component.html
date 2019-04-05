@@ -1,20 +1,37 @@
+<!-- Component starts -->
 <div class="container">
-  <div id="canvasContainer" style="height: 400px">
-    <div class="form-row justify-content-center">
-      <h4>Draw: {{randWord}}</h4>
+  <div class="row">
+    <div class="col ml-auto " style="height: 40px">
+      <button class="btn " routerLink="/dashboard"><img id="pencil"
+          src="http://www.clker.com/cliparts/i/Z/9/8/F/V/blue-pencil-hi.png" /> 
+      </button>
     </div>
-    <div class="form-row justify-content-center">
-      <div *ngIf="count < 3">
-        <button class="btn btn-primary" (click)='getNewWord()'>Get a new word!</button>
-      </div>
-      <button class="btn btn-primary" (click)='onSubmit()'>Submit!</button>
+    <div *ngIf="count < 3">
+      <button class="btn btn-outline-primary" (click)='getNewWord()'>Skip {{3-count}}/3</button>
     </div>
-    <br>
-    <canvas-whiteboard #canvasWhiteboard [drawButtonClass]="'drawButtonClass'" [drawButtonText]="'Draw'"
-      [clearButtonClass]="'clearButtonClass'" [clearButtonText]="'Clear'" [undoButtonText]="'Undo'"
-      [undoButtonEnabled]="true" [redoButtonText]="'Redo'" [redoButtonEnabled]="true" [colorPickerEnabled]="true"
-      [saveDataButtonEnabled]="true" [saveDataButtonText]="'Save'" [lineWidth]="5" [strokeColor]="'rgb(0,0,0)'"
-      [shouldDownloadDrawing]="false" [aspectRatio]=".5">
-    </canvas-whiteboard>
+    <div>
+      <button class="btn btn-outline-primary" (click)='onSubmit()'>Submit</button>
+    </div>
+  </div>
+  <hr>
+  <div class=" form-row justify-content-center mt-3">
+    <h6>Draw this phrase: </h6>
+  </div>
+  <div class=" form-row justify-content-center mb-3">
+    <h1>"{{randWord}}"</h1>
+  </div>
+
+
+  <!-- Start of Drawing canvas -->
+  <div class="form-row justify-content-center" id="canvasContainer">
+    <div class="col" style="height: 300px">
+      <canvas-whiteboard #canvasWhiteboard [drawButtonClass]="'drawButtonClass'" [drawButtonText]="'Draw'"
+        [clearButtonClass]="'clearButtonClass'" [clearButtonText]="'Clear'" [undoButtonText]="'Undo'"
+        [undoButtonEnabled]="true" [redoButtonText]="'Redo'" [redoButtonEnabled]="true" [colorPickerEnabled]="true"
+        [saveDataButtonEnabled]="false" [saveDataButtonText]="'Save'" [lineWidth]="5" [strokeColor]="'rgb(0,0,0)'"
+        [shouldDownloadDrawing]="false" [aspectRatio]=".5">
+      </canvas-whiteboard>
+    </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br>

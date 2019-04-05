@@ -1,25 +1,30 @@
 <div class="container">
-    <app-banner></app-banner>
+  <app-banner></app-banner>
+  <div class="form-row justify-content-center">
     <h4>Resume game:</h4>
-    <br>
-    <div class="container align-content-center">
-        <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>Opponent</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody class="table-hover">
-                <tr *ngFor='let game of games'>
-                    <td *ngIf="currentUsername == game.users[0].username">{{game.users[1].username | uppercase}} just guessed!</td>
-                    <td *ngIf="currentUsername != game.users[0].username">{{game.users[0].username | uppercase}} just drew!</td>
-                    <td><button class="btn btn-outline-primary" (click)="resumeGame(game)">View Game</button></td>
-                  </tr>
-            </tbody>
-          </table>
-  
-      <br>
-      <a routerLink="/playOp">Back</a>
-    </div>
   </div>
+  <div class="form-row justify-content-center">
+    <a class="btn btn-primary" routerLink="/playOp">Back</a>
+  </div>
+  <br>
+  <div class="container align-content-center">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Opponent</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody class="table-hover">
+        <tr *ngFor='let game of games'>
+          <td *ngIf="currentUsername == game.users[0].username">{{game.users[1].username | uppercase}} just guessed!
+          </td>
+          <td *ngIf="currentUsername != game.users[0].username">{{game.users[0].username | uppercase}} just drew!</td>
+          <td><button class="btn btn-outline-primary" (click)="resumeGame(game)">View Game</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+  </div>
+</div>
