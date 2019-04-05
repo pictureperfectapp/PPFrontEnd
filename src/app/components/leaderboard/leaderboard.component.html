@@ -4,7 +4,11 @@
     <img id="pencil" src="http://www.clker.com/cliparts/i/Z/9/8/F/V/blue-pencil-hi.png" />
     <hr>
   </div>
-  <table class="table">
+  <div class="form-row justify-content-center">
+    <a class="btn btn-primary" routerLink="/dashboard">Dashboard</a>
+  </div>
+  <br>
+  <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
         <th>Rank</th>
@@ -13,6 +17,8 @@
         <th>Wins</th>
         <th>Points</th>
       </tr>
+    </thead>
+    <tbody class="table-hover">
       <tr *ngFor='let player of players; let i =index'>
         <td>{{i+1}}</td>
         <td>{{player.username}}</td>
@@ -20,9 +26,6 @@
         <td>{{player.wins}}</td>
         <td>{{player.points}}</td>
       </tr>
-    </thead>
-    <tbody>
     </tbody>
   </table>
-  <a class="btn btn-outline-primary" routerLink="/dashboard">Dashboard</a>
 </div>

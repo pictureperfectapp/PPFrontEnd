@@ -2,6 +2,25 @@
     position: relative;
 }
 
-div{
+/* div{
     position: relative;
+} */
+
+.jumbotron {
+    max-height: 100%;
+}
+
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+#pencil{
+    width: 35px;
+    position:relative;
+    top:-20px;
+    margin-left:1em;
+}
+
+.btn-primary{
+    background-color: #4f45ca;
 }
