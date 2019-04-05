@@ -1,0 +1,15 @@
+input[type=text] {
+    width: 25rem;
+ }
+
+ input[type=password] {
+    width: 25rem;
+ }
+
+ input[type=submit] {
+    width: 25rem;
+ } 
+
+ .btn-primary{
+    background-color: #4f45ca;
+}

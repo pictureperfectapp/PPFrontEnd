@@ -14,17 +14,19 @@
     </div>
     <br>
     <div class="form-row justify-content-center">
+      <input class="inputstyle" type="text" [(ngModel)]="guess" name="guess" id="guess" placeholder="Guess">
+    </div>
+    <br>
+
+    <div class="form-row justify-content-center">
       <div *ngIf="message">
-        <h1>{{message}}</h1>
+        <h4>{{message}}</h4>
       </div>
     </div>
     <br>
-    <div class="form-row justify-content-center">
-      <input class="inputstyle" type="text" [(ngModel)]="guess" name="guess" id="guess" placeholder="Guess">
-    </div>
 
     <div class="form-row justify-content-center">
-      <a class="btn btn-outline-primary" (click)="print()">Guess</a>
+      <a class="btn btn-outline-primary"(click)="print()">Guess {{guessNum+1}}/3</a>
     </div>
   </div>
 </div>

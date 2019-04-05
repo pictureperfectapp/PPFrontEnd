@@ -1,0 +1,22 @@
+#loginForm1 {
+    margin-left: 25%;
+    margin-right: 25%;
+    /* box-shadow: 0 3px 20px 11px rgba(0,0,0,0.5); */
+}
+
+input[type=text] {
+    width: 25rem;
+ }
+
+ input[type=password] {
+    width: 25rem;
+ }
+
+ input[type=submit] {
+    width: 25rem;
+ } 
+
+ .btn-primary{
+   background-color: #4f45ca;
+}
+

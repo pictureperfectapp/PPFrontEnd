@@ -1,13 +1,11 @@
 <div class="container">
   <app-banner></app-banner>
   <div class="container align-content-center">
-    <div class="form-row justify-content-center">
-      <h4>Invite:</h4>
-    </div>
     <br>
     <div class="form-row justify-content-center">
-      <label>Opponent username:</label>
+      <h4>Invite opponent:</h4>
     </div>
+    <br>
     <div class="form-row justify-content-center">
       <input class="inputstyle" type="text" [(ngModel)]="opponentUsername" id="username" placeholder="Username">
     </div>
@@ -18,10 +16,9 @@
       </div>
     </div>
     <div class="form-row justify-content-center">
-      <input class="btn btn-primary" type="submit" value="Start" (click)="onSubmit()" id="submitButton">
+      <input class="btn btn-primary" type="submit" value="Start" (click)="onSubmit()" id="submitButton">&nbsp;<a class="btn btn-primary" routerLink="/playOp">Back</a>
     </div>
     <br>
     <br>
-    <a routerLink="/playOp">Back</a>
   </div>
 </div>

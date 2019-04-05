@@ -1,31 +1,36 @@
 <div class="container">
   <app-banner></app-banner>
-  
-  <div class="container align-content-center" id="loginForm">
-      <div class="form-row justify-content-center">
+  <div class="" id="loginForm1">
+      <div class="card-body container align-content-center" id="loginForm">
+      <!-- <div class=" form-row justify-content-center">
         <label>Username:</label>
-      </div>
+      </div> -->
       <div class="form-row justify-content-center">
         <input class="inputstyle" type="text" [(ngModel)]="username" id="username" placeholder="Username">
       </div>
-      <div class="form-row justify-content-center">
+      <br>
+      <!-- <div class="form-row justify-content-center">
         <label>Email:</label>
-      </div>
+      </div> -->
       <div class="form-row justify-content-center">
-        <input class="inputstyle" type="text"  [(ngModel)]="email" id="email" placeholder="Email">
+        <input class="inputstyle" type="text" [(ngModel)]="email" id="email" placeholder="Email">
       </div>
-      <div class="form-row justify-content-center">
+      <br>
+      <!-- <div class="form-row justify-content-center">
         <label>Password:</label>
-      </div>
+      </div> -->
       <div class="form-row justify-content-center">
         <input class="inputstyle" type="password" [(ngModel)]="password1" id="password" placeholder="Password">
       </div>
-      <div class="form-row justify-content-center">
+      <br>
+      <!-- <div class="form-row justify-content-center">
         <label>Re-enter Password:</label>
-      </div>
+      </div> -->
       <div class="form-row justify-content-center">
-        <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2" placeholder="Re-enter Password">
+        <input class="inputstyle" type="password" [(ngModel)]="password2" name="password2" id="password2"
+          placeholder="Re-enter Password">
       </div>
+
       <br>
       <div *ngIf="message">
         <div class="form-row justify-content-center" style="color:red">
@@ -36,7 +41,12 @@
       <div class="form-row justify-content-center">
         <input class="btn btn-primary" type="submit" value="Register" (click)="onSubmit()" id="submitButton">
       </div>
-    <br>
-    <span>Already have an account? </span><a routerLink="/login">Login Here!</a>
+    </div>
   </div>
+  <br>
+  <div class="form-row justify-content-center">
+    <span>Already have an account?&nbsp;</span><a routerLink="/login"> Login Here!</a>
+  </div>
+
+
 </div>

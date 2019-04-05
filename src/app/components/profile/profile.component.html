@@ -1,14 +1,15 @@
 <div class="container">
   <div class="jumbotron">
-  <h1 class="display-5" style="text-align:center">{{username}}</h1>
-  <img id="pencil" src="http://www.clker.com/cliparts/i/Z/9/8/F/V/blue-pencil-hi.png" />
-  <hr></div>
+    <h1 class="display-5" style="text-align:center">{{username}}</h1>
+    <img id="pencil" src="http://www.clker.com/cliparts/i/Z/9/8/F/V/blue-pencil-hi.png" />
+    <hr>
+  </div>
   <div class="form-row justify-content-center">
-    <a class="btn btn-outline-primary" routerLink="/updateInf">Update Information</a>
+      <a class="btn btn-primary" routerLink="/updateInf">Update Information</a>&nbsp;
+      <a class="btn btn-primary" routerLink="/dashboard">Dashboard</a>
   </div>
   <br>
   <br>
-  <h4>Game statistics:</h4>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -17,15 +18,13 @@
         <th>Points</th>
       </tr>
     </thead>
-    <tbody><tr>
-      <td>{{ogUser.gamesPlayed}}</td>
-      <td>{{ogUser.wins}}</td>
-      <td>{{ogUser.points}}</td>
-
-      
-      
-    </tr>
+    <tbody>
+      <tr>
+        <td>{{ogUser.gamesPlayed}}</td>
+        <td>{{ogUser.wins}}</td>
+        <td>{{ogUser.points}}</td>
+      </tr>
     </tbody>
   </table>
-  <a class="btn btn-outline-primary" routerLink="/dashboard">Dashboard</a>
+
 </div>

@@ -39,11 +39,12 @@ export class PostgameLobbyComponent implements OnInit {
       this.router.navigate(["./dashboard"]);
     }
 
+    this.listL = this.guesses.trim().split(" ");
   }
 
   word: string = "";
   guesses: string = "";
-
+  listL:string[] = [];
   myStorage = window.localStorage;
 
 
